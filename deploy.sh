@@ -46,6 +46,16 @@ else
         update-kubeconfig --name ${CLUSTER_NAME}
 fi
 
+# Check if namespace exists and create it if it doesn't.
+KUBE_NAMESPACE_EXISTS=$(kubectl get namespaces | _grep ^${DEPLOY_NAMESPACE})
+if [ -z "${KUBE_NAMESPACE_EXISTS}" ]; then
+    echo "The namespace ${DEPLOY_NAMESPACE} does not exists. Creating..."
+    kubectl create namespace "${DEPLOY_NAMESPACE}"
+else
+    echo "The namespace ${DEPLOY_NAMESPACE} exists. Skipping creation..."
+fi
+
+
 # If defined, will set up authentication parameters
 if [ "${HELM_ACTION}" == "install" ] && [ "${OCI_REGISTRY}" != "true" ]; then
 
@@ -125,7 +135,7 @@ fi
 
 if [ "${HELM_ACTION}" == "install" ]; then
     # Upgrade or install the chart.  This does it all.
-    HELM_COMMAND="helm upgrade --install --create-namespace --timeout ${TIMEOUT}  ${HELM_AUTH}"
+    HELM_COMMAND="helm upgrade --install --timeout ${TIMEOUT}  ${HELM_AUTH}"
 
     # If we should wait, then do so
     if [ -n "${HELM_WAIT}" ]; then
