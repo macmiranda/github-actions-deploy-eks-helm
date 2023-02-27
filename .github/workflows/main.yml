@@ -1,0 +1,16 @@
+on:
+  push:
+    branches: main  
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Tag/Release on Push Action
+        # You may pin to the exact commit or the version.
+        # uses: rymndhng/release-on-push-action@8e3c8b4b322c06d1032728971a4eb076e45cd33e
+        uses: rymndhng/release-on-push-action@v0.27.0
+        with:
+          # The bumping scheme to use by default. One of minor|major|patch|norelease
+          bump_version_scheme: minor
+          use_github_release_notes: true
