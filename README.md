@@ -10,7 +10,7 @@ Note:  If your EKS cluster administrative access is in a private network, you wi
 
 Although Helm repositories are different than [OCI registries](https://helm.sh/docs/topics/registries/), the `chart-repository` variable supports both options.
 
-See [example below](https://github.com/bitovi/github-actions-deploy-eks-helm#example-3) for reference, but should be similar to using a repo.
+See [example below](https://github.com/macmiranda/github-actions-deploy-eks-helm#example-3) for reference, but should be similar to using a repo.
 
 ### Inputs
 
@@ -48,7 +48,7 @@ Following inputs can be used as `step.with` keys
 
 ```yaml
     - name: Deploy Helm
-      uses: bitovi/github-actions-deploy-eks-helm@v1.2.2
+      uses: macmiranda/github-actions-deploy-eks-helm@v0.4.0
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -64,7 +64,7 @@ Following inputs can be used as `step.with` keys
 ## Example 2 - Custom Chart Repo
 ```yaml
     - name: Deploy Helm
-      uses: bitovi/github-actions-deploy-eks-helm@v1.2.2
+      uses: macmiranda/github-actions-deploy-eks-helm@v0.4.0
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -83,7 +83,7 @@ Following inputs can be used as `step.with` keys
 ## Example 3 - OCI Chart Repo
 ```yaml
     - name: Deploy Helm
-      uses: bitovi/github-actions-deploy-eks-helm@v1.2.2
+      uses: macmiranda/github-actions-deploy-eks-helm@v0.4.0
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -106,7 +106,7 @@ Following inputs can be used as `step.with` keys
         aws-region: ${{ env.aws-region }}
 
     - name: Install Helm Chart
-      uses: bitovi/github-actions-deploy-eks-helm@v1.2.2
+      uses: macmiranda/github-actions-deploy-eks-helm@v0.4.0
       with:
         aws-region: ${{ env.aws-region }}
         cluster-name: eks-cluster-${{ env.environment }}
@@ -117,7 +117,7 @@ Following inputs can be used as `step.with` keys
 
 ```yaml
     - name: Deploy Helm
-      uses: bitovi/github-actions-deploy-eks-helm@v1.2.2
+      uses: macmiranda/github-actions-deploy-eks-helm@v0.4.0
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -129,15 +129,7 @@ Following inputs can be used as `step.with` keys
 ```
 
 ## Contributing
-We would love for you to contribute to [`bitovi/github-actions-deploy-eks-helm`](https://github.com/bitovi/github-actions-deploy-eks-helm).   [Issues](https://github.com/bitovi/github-actions-deploy-eks-helm/issues) and [Pull Requests](https://github.com/bitovi/github-actions-deploy-eks-helm/pulls) are welcome!
+We would love for you to contribute to [`macmiranda/github-actions-deploy-eks-helm`](https://github.com/macmiranda/github-actions-deploy-eks-helm).   [Issues](https://github.com/macmiranda/github-actions-deploy-eks-helm/issues) and [Pull Requests](https://github.com/macmiranda/github-actions-deploy-eks-helm/pulls) are welcome!
 
 ## License
-The scripts and documentation in this project are released under the [MIT License](https://github.com/bitovi/github-actions-deploy-eks-helm/blob/main/LICENSE).
-
-## Provided by Bitovi
-[Bitovi](https://www.bitovi.com/) is a proud supporter of Open Source software.
-
-## Need help?
-Bitovi has consultants that can help.  Drop into [Bitovi's Community Slack](https://www.bitovi.com/community/slack), and talk to us in the `#devops` channel!
-
-Need DevOps Consulting Services?  Head over to [https://www.bitovi.com/devops-consulting](https://hubs.ly/Q01bFvLS0), and book a free consultation.
+The scripts and documentation in this project are released under the [MIT License](https://github.com/macmiranda/github-actions-deploy-eks-helm/blob/main/LICENSE).
