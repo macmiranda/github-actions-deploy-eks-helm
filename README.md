@@ -90,7 +90,7 @@ Following inputs can be used as `step.with` keys
         aws-region: us-west-2
         cluster-name: mycluster
         cluster-role-arn: ${{ secrets.AWS_ROLE_ARN }}
-        chart-repository: oci://registry.io/
+        chart-repository: oci://registry.io
         chart-path: organization/chart
         namespace: org
         name: some-name
