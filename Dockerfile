@@ -1,5 +1,5 @@
-FROM alpine/k8s:1.26.1
-    
+FROM dtzar/helm-kubectl:3.10.2
+
 COPY deploy.sh /usr/local/bin/deploy
 
 RUN chmod +x /usr/local/bin/deploy ;\
