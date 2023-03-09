@@ -27,6 +27,10 @@ inputs:
     namespace:
         description: 'Kubernetes namespace to use.'
         required: false
+    create-namespace:
+        description: 'Create the target namespace.'
+        required: false
+        default: "false"
     values:
         description: 'Comma separated list of value sets for helms. e.x: key1=value1,key2=value2'
         required: false
@@ -97,6 +101,7 @@ runs:
         CLUSTER_ROLE_ARN: ${{ inputs.cluster-role-arn }}
         DEPLOY_CONFIG_FILES: ${{ inputs.config-files }}
         DEPLOY_NAMESPACE: ${{ inputs.namespace }}
+        DEPLOY_CREATE_NAMESPACE: ${{ inputs.create-namespace }}
         DEPLOY_VALUES: ${{ inputs.values }}
         DEPLOY_NAME: ${{ inputs.name }}
         DEPLOY_CHART_PATH: ${{ inputs.chart-path }}

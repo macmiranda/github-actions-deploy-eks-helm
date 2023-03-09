@@ -46,16 +46,6 @@ else
         update-kubeconfig --name ${CLUSTER_NAME}
 fi
 
-# Check if namespace exists and create it if it doesn't.
-KUBE_NAMESPACE_EXISTS=$(kubectl get namespaces | _grep ^${DEPLOY_NAMESPACE})
-if [ -z "${KUBE_NAMESPACE_EXISTS}" ]; then
-    echo "The namespace ${DEPLOY_NAMESPACE} does not exists. Creating..."
-    kubectl create namespace "${DEPLOY_NAMESPACE}"
-else
-    echo "The namespace ${DEPLOY_NAMESPACE} exists. Skipping creation..."
-fi
-
-
 # If defined, will set up authentication parameters
 if [ "${HELM_ACTION}" == "install" ] && [ "${OCI_REGISTRY}" != "true" ]; then
 
@@ -164,6 +154,9 @@ if [ "${HELM_ACTION}" == "install" ]; then
         HELM_COMMAND="${HELM_COMMAND} --dependency-update"
     fi
 
+    if [ "${DEPLOY_CREATE_NAMESPACE}" == "true" ]; then
+        HELM_COMMAND="${HELM_COMMAND} --create-namespace"
+    fi
 
 elif [ "${HELM_ACTION}" == "uninstall" ]; then
     HELM_COMMAND="helm uninstall --timeout ${TIMEOUT}"
